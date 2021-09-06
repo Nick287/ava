@@ -155,24 +155,13 @@
             "height": "${frameHeight}"
           },
           "format": {
-            "@type": "#Microsoft.VideoAnalyzer.ImageFormatJpeg",
-            "quality": "${imageQuality}"
+            "@type": "#Microsoft.VideoAnalyzer.ImageFormatRaw",
+            "pixelFormat": "Bgr24"
           }
-        },
-        "samplingOptions": {
-          "skipSamplesWithoutAnnotation": "false",
-          "maximumSamplesPerSecond": "30"
         },
         "inputs": [
           {
-            "nodeName": "motionDetection",
-            "outputSelectors": [
-              {
-                "property": "mediaType",
-                "operator": "is",
-                "value": "video"
-              }
-            ]
+            "nodeName": "motionDetection"
           }
         ]
       }
