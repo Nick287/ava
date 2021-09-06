@@ -155,7 +155,7 @@
             "height": "${frameHeight}"
           },
           "format": {
-            "@type": "#Microsoft.VideoAnalyzer.ImageFormatJpeg",
+            "@type": "#Microsoft.VideoAnalyzer.ImageFormatRaw",
             "quality": "${imageQuality}"
           }
         },
