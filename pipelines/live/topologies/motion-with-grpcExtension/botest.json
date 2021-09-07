@@ -52,6 +52,12 @@
         "default": "iothubsinkoutput"
       },
       {
+        "name": "imageQuality",
+        "type": "String",
+        "description": "image encoding quality for frames (valid for JPG encoding)",
+        "default": "90"
+      },
+      {
         "name": "imageScaleMode",
         "type": "String",
         "description": "image scaling mode",
@@ -150,7 +156,7 @@
           },
           "format": {
             "@type": "#Microsoft.VideoAnalyzer.ImageFormatRaw",
-            "quality": "Bgr24"
+            "pixelFormat": "Bgr24"
           }
         },
         "samplingOptions": {
