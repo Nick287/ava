@@ -133,37 +133,48 @@
         "maximumActivationTime": "PT30S"
       },
       {
-          "@type": "#Microsoft.VideoAnalyzer.GrpcExtension",
-          "name": "grpcExtension",
-          "endpoint": {
-              "@type": "#Microsoft.VideoAnalyzer.UnsecuredEndpoint",
-              "url": "${grpcExtensionAddress}",
-              "credentials": {
-              "@type": "#Microsoft.VideoAnalyzer.UsernamePasswordCredentials",
-              "username": "${grpcExtensionUserName}",
-              "password": "${grpcExtensionPassword}"
-              }
+        "@type": "#Microsoft.VideoAnalyzer.GrpcExtension",
+        "name": "grpcExtension",
+        "endpoint": {
+          "@type": "#Microsoft.VideoAnalyzer.UnsecuredEndpoint",
+          "url": "${grpcExtensionAddress}",
+          "credentials": {
+            "@type": "#Microsoft.VideoAnalyzer.UsernamePasswordCredentials",
+            "username": "${grpcExtensionUserName}",
+            "password": "${grpcExtensionPassword}"
+          }
+        },
+        "dataTransfer": {
+          "mode": "sharedMemory",
+          "SharedMemorySizeMiB": "75"
+        },
+        "image": {
+          "scale": {
+            "mode": "${imageScaleMode}",
+            "width": "${frameWidth}",
+            "height": "${frameHeight}"
           },
-          "dataTransfer": {
-              "mode": "sharedMemory",
-              "SharedMemorySizeMiB": "75"
-          },
-          "image": {
-              "scale": {
-                  "mode": "${imageScaleMode}",
-                  "width": "${frameWidth}",
-                  "height": "${frameHeight}"
-              },
-              "format": {
-                  "@type": "#Microsoft.VideoAnalyzer.ImageFormatRaw",
-                  "pixelFormat": "Bgr24"
-              }
-          },
-          "inputs": [
+          "format": {
+            "@type": "#Microsoft.VideoAnalyzer.ImageFormatJpeg",
+            "quality": "${imageQuality}"
+          }
+        },
+        "samplingOptions": {
+          "skipSamplesWithoutAnnotation": "false",
+          "maximumSamplesPerSecond": "30"
+        },
+        "inputs": [
+          {
+            "nodeName": "motionDetection",
+            "outputSelectors": [
               {
-              "nodeName": "motionDetection"
+                "property": "mediaType",
+                "operator": "is",
+                "value": "video"
               }
-          ]
+            ]
+          }
+        ]
       }
     ],
     "sinks": [
